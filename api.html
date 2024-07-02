@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArtiiGen - API Documentation</title>
+    <link rel="stylesheet" href="/shared.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        code {
+            background-color: #f0f0f0;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+        pre {
+            background-color: #f8f8f8;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        .endpoint {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <h2>ArtiiGen API</h2>
+        <a href="/">Generator</a>
+    </nav>
+    <header>
+        <h1>ArtiiGen API Documentation</h1>
+        <p>Welcome to the ArtiiGen API documentation. This API allows you to generate ASCII art from text using various styles/fonts and provides access to style information and usage statistics.</p>
+        <p>Base URL: <code>http://localhost:5000/</code></p>
+    </header>
+
+    <section class="endpoint">
+        <h2>1. Home</h2>
+        <p><strong>URL:</strong> <code>/</code></p>
+        <p><strong>Method:</strong> GET</p>
+        <p><strong>Description:</strong> Returns a welcome message for the ArtiiGen API.</p>
+    </section>
+
+    <section class="endpoint">
+        <h2>2. List Available Styles</h2>
+        <p><strong>URL:</strong> <code>/styles</code></p>
+        <p><strong>Method:</strong> GET</p>
+        <p><strong>Description:</strong> Returns a list of available styles (fonts) that can be used with the ArtiiGen.</p>
+        <h3>Example Response</h3>
+        <pre>
+{
+    "available_styles": [
+        "block",
+        "banner",
+        "bubble",
+        ...
+    ]
+}
+        </pre>
+    </section>
+
+    <section class="endpoint">
+        <h2>3. Generate ASCII Art</h2>
+        <p><strong>URL:</strong> <code>/ascii-art</code></p>
+        <p><strong>Method:</strong> POST</p>
+        <p><strong>Description:</strong> Generates ASCII art from provided text and style.</p>
+        <h3>Request Body</h3>
+        <pre>
+{
+    "text": "Your text goes here",
+    "style": "chosen_style"
+}
+        </pre>
+        <p><strong>Parameters:</strong></p>
+        <ul>
+            <li><code>text</code> (string): Text to convert into ASCII art.</li>
+            <li><code>style</code> (string): Style (font) to use for the ASCII art.</li>
+        </ul>
+        <h3>Example Response</h3>
+        <pre>
+{
+    "ascii_art": "Generated ASCII art"
+}
+        </pre>
+    </section>
+
+    <section class="endpoint">
+        <h2>4. Get Scores</h2>
+        <p><strong>URL:</strong> <code>/scores</code></p>
+        <p><strong>Method:</strong> GET</p>
+        <p><strong>Description:</strong> Returns usage statistics (scores) for each style.</p>
+        <h3>Example Response</h3>
+        <pre>
+{
+    "block": 10,
+    "banner": 5,
+    "bubble": 7,
+    ...
+}
+        </pre>
+    </section>
+
+    <section>
+        <h2>Error Responses</h2>
+
+        <p><strong>400 Bad Request:</strong> Invalid request format or missing parameters.</p>
+        <pre>
+{
+    "error": "Invalid request. Please provide text and style as JSON data"
+}
+        </pre>
+
+        <p><strong>400 Bad Request:</strong> Invalid style provided.</p>
+        <pre>
+{
+    "error": "Invalid style. Please choose from /styles"
+}
+        </pre>
+
+        <p><strong>500 Internal Server Error:</strong> Any internal server error encountered during ASCII art generation.</p>
+        <pre>
+{
+    "error": "Internal Server Error: Description"
+}
+        </pre>
+    </section>
+
+    <footer>
+        <p>© 2024 ArtiiGen. All rights reserved.</p>
+    </footer>
+</body>
+</html>
