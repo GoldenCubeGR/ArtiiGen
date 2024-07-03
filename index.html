@@ -86,7 +86,7 @@
                 const text = document.getElementById('text').value;
                 const style = document.getElementById('style').value;
                 
-                fetch('http://127.0.0.1:5000/ascii-art', {
+                fetch(https://scattered-matti-3feds-registrar-a8614180.koyeb.app/ascii-art', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json' // Corrected Content-Type to application/json
@@ -107,7 +107,7 @@
             });
 
             // Populate the styles dropdown dynamically
-            fetch('http://127.0.0.1:5000/styles')
+            fetch('https://scattered-matti-3feds-registrar-a8614180.koyeb.app/styles')
                 .then(response => response.json())
                 .then(data => {
                     const styles = data.available_styles;
@@ -121,7 +121,7 @@
                 });
             const mostUsedDiv = document.getElementById('mostUsed');
 
-            fetch('http://127.0.0.1:5000/scores')
+            fetch('https://scattered-matti-3feds-registrar-a8614180.koyeb.app/scores')
                 .then(response => response.json())
                 .then(data => {
                     const scores = data;
